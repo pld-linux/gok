@@ -1,31 +1,31 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	1.0.2
+Version:	1.0.3
 Release:	1
-License:	GPL
+License:	LGPL v2+
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gok/1.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	c4ec4fcd39d43fc0aa43a222ff7ff7cb
+# Source0-md5:	3e5e856d5c4cdb8777d92218eecc0a8b
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel
 BuildRequires:	at-spi-devel >= 1.6.0
-BuildRequires:	atk-devel >= 1:1.8.0
+BuildRequires:	atk-devel >= 1:1.9.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
-BuildRequires:	gail-devel >= 1.6.0
+BuildRequires:	gail-devel >= 1.8.0
 BuildRequires:	gnome-common >= 2.8.0-2
 BuildRequires:	gnome-speech-devel
-BuildRequires:	gtk+2-devel >= 2:2.4.3
+BuildRequires:	gtk+2-devel >= 2:2.6.3
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.28
-BuildRequires:	libglade2-devel >= 1:2.4.0
-BuildRequires:	libgnomeui-devel >= 2.8.0
+BuildRequires:	libglade2-devel >= 1:2.5.0
+BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.8.0
-BuildRequires:	libxml2-devel >= 2.6.13
+BuildRequires:	libwnck-devel >= 2.10.0
+BuildRequires:	libxml2-devel >= 1:2.6.17
 BuildRequires:	pkgconfig
 BuildRequires:	scrollkeeper >= 0.3.12
 Requires(post):	GConf2
@@ -91,6 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/bonobo/servers/*.server
 %{_datadir}/%{name}
