@@ -15,6 +15,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
 BuildRequires:	gail-devel >= 1.4.0
+BuildRequires:	glib2-devel
 BuildRequires:	gnome-common
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool
