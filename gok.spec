@@ -47,7 +47,7 @@ klawiatury oraz wbudowanego szkieletu mechanizmów dostêpno¶ci w GNOME
 2, gok bêdzie umo¿liwia³ bardziej wydajne sterowanie i pozwoli na
 u¿ywanie pulpitu GNOME 2. Przy odpowiednim wsparciu ze strony sprzêtu,
 u¿ytkownicy gok uzyskaj± pe³ny dostêp do aplikacji obs³uguj±cych AT
-SPI, a przez to pe³ny dostêp do funkcjonalno¶ci dostarczancyh przez te
+SPI, a przez to pe³ny dostêp do funkcjonalno¶ci dostarczanych przez te
 aplikacje.
 
 %prep
