@@ -1,4 +1,4 @@
-Summary:	Gnome Onscreen Keyboard
+Summary:	GNOME Onscreen Keyboard
 Summary(pl):	Klawiatura na ekranie dla GNOME
 Name:		gok
 Version:	0.7.13
@@ -17,9 +17,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 The gok project aims to enable users to control their computer without
 having to rely on a standard keyboard or mouse. Many individuals must
 control the computer using alternative input methods. Using innovative
-dynamic keyboard strategies, and leveraging gnome 2's built-in
+dynamic keyboard strategies, and leveraging GNOME 2's built-in
 accessibility framework, the gok will make control more efficient and
-enable use of the gnome 2 desktop. With the right hardware support and
+enable use of the GNOME 2 desktop. With the right hardware support and
 the gok individuals will have full access to applications that support
 the AT SPI, and therefore, full access to the functionality these
 applications provide.
