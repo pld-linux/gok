@@ -11,8 +11,8 @@ URL:		http://www.gok.ca/
 BuildRequires:	at-spi-devel >= 1.3.7
 BuildRequires:	atk-devel >= 1.4.0
 BuildRequires:	esound-devel
-Buildrequires:	gail-devel >= 1.4.0
-Buildrequires:	gtk-doc >= 1.1
+BuildRequires:	gail-devel >= 1.4.0
+BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libwnck-devel >= 2.4.0
 BuildRequires:	libxml2-devel >= 2.6.0
