@@ -1,4 +1,5 @@
 Summary:	Gnome Onscreen Keyboard
+Summary(pl):	Klawiatura na ekranie dla GNOME
 Name:		gok
 Version:	0.6.0
 Release:	1
@@ -8,6 +9,7 @@ Source0:	http://www.gok.ca/%{name}-%{version}.tar.gz
 URL:		http://www.gok.ca/
 BuildRequires:	at-spi-devel
 BuildRequires:	libwnck-devel
+Requires(post):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -20,6 +22,18 @@ enable use of the gnome 2 desktop. With the right hardware support and
 the gok individuals will have full access to applications that support
 the AT SPI, and therefore, full access to the functionality these
 applications provide.
+
+%description -l pl
+Celem projektu gok jest umo¿liwienie u¿ytkownikom sterowania ich
+komputerem bez konieczno¶ci u¿ywania standardowej klawiatury ani
+myszy. Wiele osób musi sterowaæ komputerem przy u¿yciu alternatywnych
+metod wej¶ciowych. Przy u¿yciu innowacyjnych strategii dynamicznej
+klawiatury oraz wbudowanego szkieletu mechanizmów dostêpno¶ci w GNOME
+2, gok bêdzie umo¿liwia³ bardziej wydajne sterowanie i pozwoli na
+u¿ywanie pulpitu GNOME 2. Przy odpowiednim wsparciu ze strony sprzêtu,
+u¿ytkownicy gok uzyskaj± pe³ny dostêp do aplikacji obs³uguj±cych AT
+SPI, a przez to pe³ny dostêp do funkcjonalno¶ci dostarczancyh przez te
+aplikacje.
 
 %prep
 %setup -q
