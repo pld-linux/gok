@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.7/%{name}-%{version}.tar.bz2
+# Source0-md5:	7988f931b0c10f27c7212c33169917dc
 URL:		http://www.gok.ca/
 BuildRequires:	at-spi-devel
 BuildRequires:	libwnck-devel
