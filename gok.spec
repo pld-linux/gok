@@ -53,7 +53,7 @@ export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 	DESTDIR=$RPM_BUILD_ROOT
 unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 
-%find_lang %{name}
+%find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -67,6 +67,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_pkgconfigdir}/*
 %{_omf_dest_dir}/%{name}
-%{_datadir}/gnome/help/%{name}
 %{_sysconfdir}/gconf/schemas/*
 %{_gtkdocdir}/%{name}
