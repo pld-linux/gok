@@ -9,6 +9,7 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.9/%{name}-%{version}.t
 # Source0-md5:	fe3c9e79a0ce6d437464d746ad5b2530
 Patch0:		%{name}-locale-names.patch
 URL:		http://www.gok.ca/
+BuildRequires:	ORBit2-devel
 BuildRequires:	at-spi-devel >= 1.3.7
 BuildRequires:	atk-devel >= 1.5.2
 BuildRequires:	autoconf
