@@ -11,7 +11,7 @@ Patch0:		%{name}-locale-names.patch
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel
 BuildRequires:	at-spi-devel >= 1.5.2
-BuildRequires:	atk-devel >= 1.7.1
+BuildRequires:	atk-devel >= 1:1.7.1
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
