@@ -1,12 +1,12 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	0.12.1
+Version:	0.12.2
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.12/%{name}-%{version}.tar.bz2
-# Source0-md5:	149824f6bbcc351bfbfa32222f6ed825
+# Source0-md5:	da1249b24ea1655baac447684f2cbb88
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel
