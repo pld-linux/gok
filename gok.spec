@@ -1,25 +1,28 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	0.10.2
+Version:	0.11.5
 Release:	1
 License:	GPL
 Group:		Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	35605f8f8c32832c3406be92c05cc1f4
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.11/%{name}-%{version}.tar.bz2
+# Source0-md5:	e222792d21cb776a3bbcbd560dd3d9bc
 Patch0:		%{name}-locale-names.patch
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel
-BuildRequires:	at-spi-devel >= 1.4.0
-BuildRequires:	atk-devel >= 1.6.0
+BuildRequires:	at-spi-devel >= 1.5.2
+BuildRequires:	atk-devel >= 1.7.1
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
 BuildRequires:	gail-devel >= 1.6.0
 BuildRequires:	gnome-common
+BuildRequires:	gnome-speech-devel
+BuildRequires:	gtk+2-devel >= 2:2.4.3
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.28
-BuildRequires:	libgnomeui-devel >= 2.6.0
+BuildRequires:	libglade2-devel >= 1:2.4.0
+BuildRequires:	libgnomeui-devel >= 2.7.1
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.6.0
 BuildRequires:	libxml2-devel >= 2.6.0
@@ -87,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/%{name}
+%attr(755,root,root) %{_bindir}/*
 %{_libdir}/bonobo/servers/*.server
 %{_datadir}/%{name}
 %{_pkgconfigdir}/*
