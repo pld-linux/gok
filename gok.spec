@@ -1,21 +1,26 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	0.9.3
+Version:	0.9.4
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	2023d94de48676c87f801910bf6d44e7
-Patch0:		%{name}-DESTDIR.patch
+# Source0-md5:	e31a4092b1815aa99cf1f0431bb7604e
+Patch0:		%{name}-xmldocs_make.patch
+Patch1:		%{name}-install.patch
 URL:		http://www.gok.ca/
 BuildRequires:	at-spi-devel >= 1.3.7
 BuildRequires:	atk-devel >= 1.4.0
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	esound-devel
 BuildRequires:	gail-devel >= 1.4.0
-#BuildRequires:	gnome-common
+BuildRequires:	gnome-common
 BuildRequires:	gtk-doc >= 1.1
+BuildRequires:	intltool
 BuildRequires:	libgnomeui-devel >= 2.4.0
+BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.4.0
 BuildRequires:	libxml2-devel >= 2.6.0
 BuildRequires:	scrollkeeper >= 0.3.12
@@ -48,8 +53,15 @@ aplikacje.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
+glib-gettextize --copy --force
+intltoolize --copy --force
+%{__libtoolize}
+%{__aclocal} -I %{_aclocaldir}/gnome2-macros
+%{__autoconf}
+%{__automake}
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
 	--disable-schemas-install
