@@ -1,17 +1,16 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	0.11.6
+Version:	0.11.7
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.11/%{name}-%{version}.tar.bz2
-# Source0-md5:	68cd517832472f025ac2acda6c883df5
-Patch0:		%{name}-locale-names.patch
+# Source0-md5:	016cc35f4463ff86b34d46f5620d0ec9
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel
-BuildRequires:	at-spi-devel >= 1.5.2
-BuildRequires:	atk-devel >= 1:1.7.1
+BuildRequires:	at-spi-devel >= 1.5.4
+BuildRequires:	atk-devel >= 1:1.7.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
@@ -22,7 +21,7 @@ BuildRequires:	gtk+2-devel >= 2:2.4.3
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.28
 BuildRequires:	libglade2-devel >= 1:2.4.0
-BuildRequires:	libgnomeui-devel >= 2.7.91
+BuildRequires:	libgnomeui-devel >= 2.7.92
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.6.0
 BuildRequires:	libxml2-devel >= 2.6.0
@@ -55,9 +54,6 @@ aplikacje.
 
 %prep
 %setup -q
-%patch0 -p1
-
-mv po/{no,nb}.po
 
 %build
 glib-gettextize --copy --force
@@ -79,6 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome
 
