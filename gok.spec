@@ -1,28 +1,30 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	0.10.2
+Version:	0.11.8
 Release:	1
 License:	GPL
 Group:		Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	35605f8f8c32832c3406be92c05cc1f4
-Patch0:		%{name}-locale-names.patch
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.11/%{name}-%{version}.tar.bz2
+# Source0-md5:	14dc7913f61421d662983b5ca5fafa75
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel
-BuildRequires:	at-spi-devel >= 1.4.0
-BuildRequires:	atk-devel >= 1.6.0
+BuildRequires:	at-spi-devel >= 1.6.0
+BuildRequires:	atk-devel >= 1:1.8.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
 BuildRequires:	gail-devel >= 1.6.0
-BuildRequires:	gnome-common
+BuildRequires:	gnome-common >= 2.8.0
+BuildRequires:	gnome-speech-devel
+BuildRequires:	gtk+2-devel >= 2:2.4.3
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.28
-BuildRequires:	libgnomeui-devel >= 2.6.0
+BuildRequires:	libglade2-devel >= 1:2.4.0
+BuildRequires:	libgnomeui-devel >= 2.8.0
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.6.0
-BuildRequires:	libxml2-devel >= 2.6.0
+BuildRequires:	libwnck-devel >= 2.8.0
+BuildRequires:	libxml2-devel >= 2.6.13
 BuildRequires:	scrollkeeper >= 0.3.12
 Requires(post):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -52,15 +54,12 @@ aplikacje.
 
 %prep
 %setup -q
-%patch0 -p1
-
-mv po/{no,nb}.po
 
 %build
 glib-gettextize --copy --force
 intltoolize --copy --force
 %{__libtoolize}
-%{__aclocal} -I %{_aclocaldir}/gnome2-macros
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure \
@@ -77,6 +76,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+
 %find_lang %{name} --with-gnome
 
 %clean
@@ -87,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/%{name}
+%attr(755,root,root) %{_bindir}/*
 %{_libdir}/bonobo/servers/*.server
 %{_datadir}/%{name}
 %{_pkgconfigdir}/*
