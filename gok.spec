@@ -1,7 +1,7 @@
 Summary:	Gnome Onscreen Keyboard
 Summary(pl):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	0.6.0
+Version:	0.7.0
 Release:	1
 License:	GPL
 Group:		Applications
@@ -40,15 +40,18 @@ aplikacje.
 
 %build
 %configure \
-	--with-html-dir=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir} \
+	--disable-schemas-install
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
+export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 
 %find_lang %{name}
 
