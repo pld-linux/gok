@@ -1,12 +1,12 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	0.11.16
+Version:	0.11.17
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.11/%{name}-%{version}.tar.bz2
-# Source0-md5:	6bfe9d4efb35ae20ef1c05c191dc8ad7
+# Source0-md5:	6d76c815e7d453cdbfc31f4c45659573
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel
@@ -16,7 +16,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
 BuildRequires:	gail-devel >= 1.6.0
-BuildRequires:	gnome-common >= 2.8.0
+BuildRequires:	gnome-common >= 2.8.0-2
 BuildRequires:	gnome-speech-devel
 BuildRequires:	gtk+2-devel >= 2:2.4.3
 BuildRequires:	gtk-doc >= 1.1
@@ -58,6 +58,7 @@ aplikacje.
 %patch0 -p1
 
 %build
+cp /usr/share/gnome-common/data/omf.make .
 glib-gettextize --copy --force
 intltoolize --copy --force
 %{__libtoolize}
