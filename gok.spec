@@ -1,15 +1,20 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	0.8.3
+Version:	0.8.4
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	413b37447b6f7bb108d53bcf55cf3b0b
+# Source0-md5:	6335c3e95b910c0f7c8baedcff4246b5
 URL:		http://www.gok.ca/
 BuildRequires:	at-spi-devel >= 1.3.7
-BuildRequires:	libwnck-devel
+BuildRequires:	atk-devel >= 1.4.0
+BuildRequires:	esound-devel
+Buildrequires:	gail-devel >= 1.4.0
+Buildrequires:	gtk-doc >= 1.1
+BuildRequires:	libgnomeui-devel >= 2.4.0
+BuildRequires:	libwnck-devel >= 2.4.0
 Requires(post):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
