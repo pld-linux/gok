@@ -1,0 +1,12 @@
+diff -urN aa/gok-0.9.4/help/xmldocs.make gok-0.9.4/help/xmldocs.make
+--- aa/gok-0.9.4/help/xmldocs.make	2002-09-26 21:06:29.000000000 +0200
++++ gok-0.9.4/help/xmldocs.make	2003-12-28 16:16:44.037967928 +0100
+@@ -53,7 +53,7 @@
+ 	touch omf_timestamp
+ 
+ $(docname).xml: $(entities)
+-        -ourdir=`pwd`;  \
++        - ourdir=`pwd`;  \
+         cd $(srcdir);   \
+         cp $(entities) $$ourdir
+ 
