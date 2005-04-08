@@ -2,7 +2,7 @@ Summary:	GNOME Onscreen Keyboard
 Summary(pl):	Klawiatura na ekranie dla GNOME
 Name:		gok
 Version:	1.0.3
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gok/1.0/%{name}-%{version}.tar.bz2
@@ -10,25 +10,26 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/gok/1.0/%{name}-%{version}.tar.b
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel
-BuildRequires:	at-spi-devel >= 1.6.0
-BuildRequires:	atk-devel >= 1:1.9.0
+BuildRequires:	at-spi-devel >= 1.6.3
+BuildRequires:	atk-devel >= 1:1.9.1
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
-BuildRequires:	gail-devel >= 1.8.0
+BuildRequires:	gail-devel >= 1.8.2
 BuildRequires:	gnome-common >= 2.8.0-2
 BuildRequires:	gnome-speech-devel
-BuildRequires:	gtk+2-devel >= 2:2.6.3
-BuildRequires:	gtk-doc >= 1.1
-BuildRequires:	intltool >= 0.28
-BuildRequires:	libglade2-devel >= 1:2.5.0
+BuildRequires:	gtk+2-devel >= 2:2.6.4
+BuildRequires:	gtk-doc >= 1.3
+BuildRequires:	intltool >= 0.33
+BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.10.0
-BuildRequires:	libxml2-devel >= 1:2.6.17
+BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	pkgconfig
-BuildRequires:	scrollkeeper >= 0.3.12
-Requires(post):	GConf2
+BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	scrollkeeper >= 0.3.14
+Requires(post,preun):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -60,8 +61,8 @@ aplikacje.
 
 %build
 cp /usr/share/gnome-common/data/omf.make .
-glib-gettextize --copy --force
-intltoolize --copy --force
+%{__glib_gettextize}
+%{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -87,7 +88,10 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install
+%gconf_schema_install gok.schemas
+
+%preun
+%gconf_schema_uninstall gok.schemas
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
