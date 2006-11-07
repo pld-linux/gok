@@ -106,4 +106,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/*
 %{_gtkdocdir}/%{name}
 %{_pixmapsdir}/*
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
