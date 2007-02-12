@@ -1,5 +1,5 @@
 Summary:	GNOME Onscreen Keyboard
-Summary(pl):	Klawiatura na ekranie dla GNOME
+Summary(pl.UTF-8):   Klawiatura na ekranie dla GNOME
 Name:		gok
 Version:	1.2.0
 Release:	1
@@ -47,16 +47,16 @@ the gok individuals will have full access to applications that support
 the AT SPI, and therefore, full access to the functionality these
 applications provide.
 
-%description -l pl
-Celem projektu gok jest umoøliwienie uøytkownikom sterowania ich
-komputerem bez konieczno∂ci uøywania standardowej klawiatury ani
-myszy. Wiele osÛb musi sterowaÊ komputerem przy uøyciu alternatywnych
-metod wej∂ciowych. Przy uøyciu innowacyjnych strategii dynamicznej
-klawiatury oraz wbudowanego szkieletu mechanizmÛw dostÍpno∂ci w GNOME
-2, gok bÍdzie umoøliwia≥ bardziej wydajne sterowanie i pozwoli na
-uøywanie pulpitu GNOME 2. Przy odpowiednim wsparciu ze strony sprzÍtu,
-uøytkownicy gok uzyskaj± pe≥ny dostÍp do aplikacji obs≥uguj±cych AT
-SPI, a przez to pe≥ny dostÍp do funkcjonalno∂ci dostarczanych przez te
+%description -l pl.UTF-8
+Celem projektu gok jest umo≈ºliwienie u≈ºytkownikom sterowania ich
+komputerem bez konieczno≈õci u≈ºywania standardowej klawiatury ani
+myszy. Wiele os√≥b musi sterowaƒá komputerem przy u≈ºyciu alternatywnych
+metod wej≈õciowych. Przy u≈ºyciu innowacyjnych strategii dynamicznej
+klawiatury oraz wbudowanego szkieletu mechanizm√≥w dostƒôpno≈õci w GNOME
+2, gok bƒôdzie umo≈ºliwia≈Ç bardziej wydajne sterowanie i pozwoli na
+u≈ºywanie pulpitu GNOME 2. Przy odpowiednim wsparciu ze strony sprzƒôtu,
+u≈ºytkownicy gok uzyskajƒÖ pe≈Çny dostƒôp do aplikacji obs≈ÇugujƒÖcych AT
+SPI, a przez to pe≈Çny dostƒôp do funkcjonalno≈õci dostarczanych przez te
 aplikacje.
 
 %prep
