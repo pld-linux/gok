@@ -1,5 +1,5 @@
 Summary:	GNOME Onscreen Keyboard
-Summary(pl.UTF-8):   Klawiatura na ekranie dla GNOME
+Summary(pl.UTF-8):	Klawiatura na ekranie dla GNOME
 Name:		gok
 Version:	1.2.0
 Release:	1
