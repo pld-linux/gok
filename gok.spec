@@ -1,39 +1,40 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl.UTF-8):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	1.2.0
+Version:	1.2.3
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gok/1.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	a5b022cf0b83800a38bb1f6d402ffa57
+# Source0-md5:	1ef0a71467936c5a2e08963b51a4e75c
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gok.ca/
-BuildRequires:	ORBit2-devel >= 2.14.2
-BuildRequires:	at-spi-devel >= 1.7.11
-BuildRequires:	atk-devel >= 1:1.12.2
+BuildRequires:	ORBit2-devel >= 1:2.14.7
+BuildRequires:	at-spi-devel >= 1.18.0
+BuildRequires:	atk-devel >= 1:1.18.0
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	esound-devel >= 0.2.36
-BuildRequires:	gail-devel >= 1.9.2
+BuildRequires:	esound-devel >= 0.2.37
+BuildRequires:	gail-devel >= 1.18.0
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gnome-speech-devel >= 0.4.4
-BuildRequires:	gtk+2-devel >= 2:2.10.2
-BuildRequires:	gtk-doc >= 1.7
-BuildRequires:	intltool >= 0.35
-BuildRequires:	libbonobo-devel >= 2.15.3
+BuildRequires:	gnome-speech-devel >= 0.4.10
+BuildRequires:	gtk+2-devel >= 2:2.10.10
+BuildRequires:	gtk-doc >= 1.8
+BuildRequires:	intltool >= 0.35.5
+BuildRequires:	libbonobo-devel >= 2.18.0
 BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeui-devel >= 2.15.91
+BuildRequires:	libgnomeui-devel >= 2.18.1
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.15.92
-BuildRequires:	libxml2-devel >= 1:2.6.26
+BuildRequires:	libwnck-devel >= 2.18.0
+BuildRequires:	libxml2-devel >= 1:2.6.27
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper >= 0.3.14
+BuildRequires:	xorg-lib-libXevie-devel
 BuildRequires:	xorg-lib-libXi-devel
 Requires(post,preun):	GConf2
-Requires:	libgnomeui >= 2.15.91
+Requires:	libgnomeui >= 2.18.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -58,6 +59,18 @@ używanie pulpitu GNOME 2. Przy odpowiednim wsparciu ze strony sprzętu,
 użytkownicy gok uzyskają pełny dostęp do aplikacji obsługujących AT
 SPI, a przez to pełny dostęp do funkcjonalności dostarczanych przez te
 aplikacje.
+
+%package apidocs
+Summary:	gok API documentation
+Summary(pl.UTF-8):	Dokumentacja API gok
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+gok API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API gok.
 
 %prep
 %setup -q
@@ -104,6 +117,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/*
 %{_omf_dest_dir}/%{name}
 %{_sysconfdir}/gconf/schemas/*
-%{_gtkdocdir}/%{name}
 %{_pixmapsdir}/*
 %{_desktopdir}/*.desktop
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/gok
