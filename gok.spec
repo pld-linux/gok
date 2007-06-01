@@ -1,39 +1,44 @@
+#
+# Conditional build:
+%bcond_without	apidocs		# disable gtk-doc
+#
 Summary:	GNOME Onscreen Keyboard
 Summary(pl.UTF-8):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	1.2.3
+Version:	1.2.5
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gok/1.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	1ef0a71467936c5a2e08963b51a4e75c
-Patch0:		%{name}-desktop.patch
+# Source0-md5:	2ef1f171385a37f93408dbca7ecfdf11
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel >= 1:2.14.7
-BuildRequires:	at-spi-devel >= 1.18.0
+BuildRequires:	at-spi-devel >= 1.18.1
 BuildRequires:	atk-devel >= 1:1.18.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 0.2.37
 BuildRequires:	gail-devel >= 1.18.0
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-common >= 2.12.0
+BuildRequires:	gnome-common >= 2.18.0
 BuildRequires:	gnome-speech-devel >= 0.4.10
 BuildRequires:	gtk+2-devel >= 2:2.10.10
-BuildRequires:	gtk-doc >= 1.8
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.8}
 BuildRequires:	intltool >= 0.35.5
 BuildRequires:	libbonobo-devel >= 2.18.0
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.18.1
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.18.0
-BuildRequires:	libxml2-devel >= 1:2.6.27
+BuildRequires:	libwnck-devel >= 2.18.2
+BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper >= 0.3.14
 BuildRequires:	xorg-lib-libXevie-devel
 BuildRequires:	xorg-lib-libXi-devel
 Requires(post,preun):	GConf2
+Requires(post,postun):	gtk+2 >= 2:2.10.10
+Requires(post,postun):	hicolor-icon-theme
 Requires:	libgnomeui >= 2.18.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -74,7 +79,6 @@ Dokumentacja API gok.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 cp /usr/share/gnome-common/data/omf.make .
@@ -87,7 +91,7 @@ cp /usr/share/gnome-common/data/omf.make .
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
 	--disable-schemas-install \
-	--enable-gtk-doc
+	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc
 %{__make}
 
 %install
@@ -97,6 +101,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
+%{!?with_apidocs:rm -rf $RPM_BUILD_ROOT%{_gtkdocdir}}
+
 %find_lang %{name} --with-gnome
 
 %clean
@@ -104,9 +110,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %gconf_schema_install gok.schemas
+%update_icon_cache hicolor
 
 %preun
 %gconf_schema_uninstall gok.schemas
+
+%postun
+%update_icon_cache hicolor
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
@@ -114,12 +124,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/bonobo/servers/*.server
 %{_datadir}/%{name}
-%{_pkgconfigdir}/*
+%{_pkgconfigdir}/*.pc
 %{_omf_dest_dir}/%{name}
-%{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/gconf/schemas/gok.schemas
+%{_iconsdir}/hicolor/*/apps/gok.png
 %{_pixmapsdir}/*
 %{_desktopdir}/*.desktop
 
+%if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/gok
+%endif
