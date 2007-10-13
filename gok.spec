@@ -5,12 +5,13 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl.UTF-8):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	1.3.4
+Version:	1.3.6
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/1.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	b304eb500800c0b359d2e3c361be5282
+# Source0-md5:	5a427c4a30a528a5b61f7441ffd4efe4
+Patch0:		%{name}-build.patch
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	at-spi-devel >= 1.20.0
@@ -27,7 +28,7 @@ BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libbonobo-devel >= 2.20.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.19.1
+BuildRequires:	libgnomeui-devel >= 2.20.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.20.0
 BuildRequires:	libxml2-devel >= 1:2.6.30
@@ -39,7 +40,7 @@ BuildRequires:	xorg-lib-libXi-devel
 Requires(post,preun):	GConf2
 Requires(post,postun):	gtk+2 >= 2:2.12.0
 Requires(post,postun):	hicolor-icon-theme
-Requires:	libgnomeui >= 2.19.1
+Requires:	libgnomeui >= 2.20.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -79,6 +80,7 @@ Dokumentacja API gok.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 cp /usr/share/gnome-common/data/omf.make .
