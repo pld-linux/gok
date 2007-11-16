@@ -6,7 +6,7 @@ Summary:	GNOME Onscreen Keyboard
 Summary(pl.UTF-8):	Klawiatura na ekranie dla GNOME
 Name:		gok
 Version:	1.3.6
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/1.3/%{name}-%{version}.tar.bz2
@@ -33,7 +33,9 @@ BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.20.0
 BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.197
+# support for --with-omf in find-lang.sh
+BuildRequires:	rpm-build >= 4.4.9-10
+BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.14
 BuildRequires:	xorg-lib-libXevie-devel
 BuildRequires:	xorg-lib-libXi-devel
@@ -84,6 +86,9 @@ Dokumentacja API gok.
 %setup -q
 %patch0 -p1
 
+sed -i -e s#sr\@Latn#sr\@latin# po/LINGUAS
+mv -f po/sr\@{Latn,latin}.po
+
 %build
 cp /usr/share/gnome-common/data/omf.make .
 %{__glib_gettextize}
@@ -107,9 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{!?with_apidocs:rm -rf $RPM_BUILD_ROOT%{_gtkdocdir}}
 
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
-%find_lang %{name} --with-gnome
+%find_lang %{name} --with-gnome --with-omf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -131,7 +134,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/bonobo/servers/*.server
 %{_datadir}/%{name}
 %{_pkgconfigdir}/*.pc
-%{_omf_dest_dir}/%{name}
 %{_sysconfdir}/gconf/schemas/gok.schemas
 %{_iconsdir}/hicolor/*/apps/gok.png
 %{_pixmapsdir}/*
