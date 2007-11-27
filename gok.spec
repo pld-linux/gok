@@ -33,10 +33,10 @@ BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.20.0
 BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	pkgconfig
-# support for --with-omf in find-lang.sh
-BuildRequires:	rpm-build >= 4.4.9-10
+BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.14
+BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libXevie-devel
 BuildRequires:	xorg-lib-libXi-devel
 Requires(post,preun):	GConf2
@@ -86,7 +86,7 @@ Dokumentacja API gok.
 %setup -q
 %patch0 -p1
 
-sed -i -e s#sr\@Latn#sr\@latin# po/LINGUAS
+sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
 mv -f po/sr\@{Latn,latin}.po
 
 %build
