@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	apidocs		# disable gtk-doc
+%bcond_without	usb		# support for libusb input
 #
 Summary:	GNOME Onscreen Keyboard
 Summary(pl.UTF-8):	Klawiatura na ekranie dla GNOME
@@ -13,6 +14,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/1.3/%{name}-%{version}.tar.b
 # Source0-md5:	14b2407604ceec0ffcbf4866fef35502
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
+BuildRequires:	GConf2-devel
 BuildRequires:	at-spi-devel >= 1.20.0
 BuildRequires:	atk-devel >= 1:1.20.0
 BuildRequires:	autoconf
@@ -29,6 +31,7 @@ BuildRequires:	libbonobo-devel >= 2.20.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomeui-devel >= 2.20.0
 BuildRequires:	libtool
+%{?with_usb:BuildRequires:	libusb-devel}
 BuildRequires:	libwnck-devel >= 2.20.0
 BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	pkgconfig
@@ -98,6 +101,7 @@ cp /usr/share/gnome-common/data/omf.make .
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
 	--disable-schemas-install \
+	%{?with_usb:--enable-libusb-input} \
 	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc
 %{__make}
 
