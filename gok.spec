@@ -11,7 +11,6 @@ License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/1.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	14b2407604ceec0ffcbf4866fef35502
-Patch0:		%{name}-build.patch
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	at-spi-devel >= 1.20.0
@@ -84,7 +83,6 @@ Dokumentacja API gok.
 
 %prep
 %setup -q
-%patch0 -p1
 
 sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
 mv -f po/sr\@{Latn,latin}.po
