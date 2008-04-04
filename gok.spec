@@ -7,7 +7,7 @@ Summary:	GNOME Onscreen Keyboard
 Summary(pl.UTF-8):	Klawiatura na ekranie dla GNOME
 Name:		gok
 Version:	1.3.7
-Release:	0.1
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/1.3/%{name}-%{version}.tar.bz2
@@ -108,6 +108,9 @@ cp /usr/share/gnome-common/data/omf.make .
 %install
 rm -rf $RPM_BUILD_ROOT
 
+if [ -f C/main.kbd ]; then
+	mv C/*.kbd .
+fi
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
