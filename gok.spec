@@ -44,6 +44,7 @@ BuildRequires:	xorg-lib-libXi-devel
 Requires(post,preun):	GConf2
 Requires(post,postun):	gtk+2 >= 2:2.12.0
 Requires(post,postun):	hicolor-icon-theme
+Requires(post,postun):	scrollkeeper
 Requires:	libgnomeui >= 2.20.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -124,12 +125,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %gconf_schema_install gok.schemas
+%scrollkeeper_update_post
 %update_icon_cache hicolor
 
 %preun
 %gconf_schema_uninstall gok.schemas
 
 %postun
+%scrollkeeper_update_postun
 %update_icon_cache hicolor
 
 %files -f %{name}.lang
