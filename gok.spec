@@ -6,16 +6,16 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl.UTF-8):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	1.3.7
+Version:	1.4.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/1.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	14b2407604ceec0ffcbf4866fef35502
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/1.4/%{name}-%{version}.tar.bz2
+# Source0-md5:	ba9b013643a0ff9572978a97fa5c49fe
 URL:		http://www.gok.ca/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	GConf2-devel
-BuildRequires:	at-spi-devel >= 1.20.0
+BuildRequires:	at-spi-devel >= 1.22.0
 BuildRequires:	atk-devel >= 1:1.20.0
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -26,13 +26,13 @@ BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-speech-devel >= 0.4.16
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.8}
-BuildRequires:	intltool >= 0.36.2
+BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libbonobo-devel >= 2.20.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.20.0
+BuildRequires:	libgnomeui-devel >= 2.22.0
 BuildRequires:	libtool
 %{?with_usb:BuildRequires:	libusb-devel}
-BuildRequires:	libwnck-devel >= 2.20.0
+BuildRequires:	libwnck-devel >= 2.22.0
 BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
@@ -45,7 +45,7 @@ Requires(post,preun):	GConf2
 Requires(post,postun):	gtk+2 >= 2:2.12.0
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
-Requires:	libgnomeui >= 2.20.0
+Requires:	libgnomeui >= 2.22.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -88,16 +88,16 @@ Dokumentacja API gok.
 %prep
 %setup -q
 
-sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
-mv -f po/sr\@{Latn,latin}.po
+sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
+mv -f po/sr@{Latn,latin}.po
 
 %build
-cp /usr/share/gnome-common/data/omf.make .
 %{__glib_gettextize}
 %{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
