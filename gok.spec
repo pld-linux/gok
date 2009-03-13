@@ -9,7 +9,7 @@ Name:		gok
 Version:	2.24.0
 Release:	3
 License:	LGPL v2+
-Group:		X11/Applications
+Group:		X11/Applications/Accessibility
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/2.24/%{name}-%{version}.tar.bz2
 # Source0-md5:	3fff3dee0d673eef32ab149d4a0a480e
 URL:		http://www.gok.ca/
