@@ -6,12 +6,12 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl.UTF-8):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	2.24.0
-Release:	3
+Version:	2.26.0
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications/Accessibility
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/2.24/%{name}-%{version}.tar.bz2
-# Source0-md5:	3fff3dee0d673eef32ab149d4a0a480e
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/2.26/%{name}-%{version}.tar.bz2
+# Source0-md5:	8cc28ad6010a977c9ccbe8d5b690f636
 URL:		http://www.gok.ca/
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	ORBit2-devel >= 1:2.14.9
