@@ -18,6 +18,7 @@ BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	at-spi-devel >= 1.24.0
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	esound-devel >= 0.2.37
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.24.0
@@ -35,7 +36,6 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.14
-BuildRequires:	xorg-lib-libXevie-devel
 BuildRequires:	xorg-lib-libXi-devel
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
