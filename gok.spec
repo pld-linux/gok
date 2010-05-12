@@ -6,12 +6,12 @@
 Summary:	GNOME Onscreen Keyboard
 Summary(pl.UTF-8):	Klawiatura na ekranie dla GNOME
 Name:		gok
-Version:	2.26.0
+Version:	2.30.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications/Accessibility
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/2.26/%{name}-%{version}.tar.bz2
-# Source0-md5:	8cc28ad6010a977c9ccbe8d5b690f636
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/2.30/%{name}-%{version}.tar.bz2
+# Source0-md5:	853c7825eb62d7c425f5a0efdc07412a
 URL:		http://www.gok.ca/
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	ORBit2-devel >= 1:2.14.9
@@ -23,25 +23,25 @@ BuildRequires:	esound-devel >= 0.2.37
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-speech-devel >= 0.4.16
-BuildRequires:	gtk+2-devel >= 2:2.14.0
+BuildRequires:	gtk+2-devel >= 2:2.18.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.8}
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libbonobo-devel >= 2.24.0
-BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.24.0
+BuildRequires:	libcanberra-gtk-devel >= 0.3
 BuildRequires:	libtool
 %{?with_usb:BuildRequires:	libusb-compat-devel}
 BuildRequires:	libwnck-devel >= 2.24.0
+BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.14
+BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libXi-devel
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
-Requires:	libgnomeui >= 2.24.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -84,6 +84,9 @@ Dokumentacja API gok.
 %prep
 %setup -q
 
+sed -i -e 's/en@shaw//' po/LINGUAS
+rm -f po/en@shaw.po
+
 %build
 %{__glib_gettextize}
 %{__intltoolize}
@@ -95,6 +98,7 @@ Dokumentacja API gok.
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
 	--disable-schemas-install \
+	--disable-silent-rules \
 	%{?with_usb:--enable-libusb-input} \
 	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc
 %{__make}
@@ -140,6 +144,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/apps/gok.png
 %{_pixmapsdir}/*
 %{_desktopdir}/gok.desktop
+%{_datadir}/sounds/freedesktop/stereo/*.wav
 
 %if %{with apidocs}
 %files apidocs
