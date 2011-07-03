@@ -36,7 +36,6 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.14
-BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xorg-lib-libXi-devel
@@ -85,9 +84,6 @@ Dokumentacja API gok.
 
 %prep
 %setup -q
-
-sed -i -e 's/en@shaw//' po/LINGUAS
-rm -f po/en@shaw.po
 
 %build
 %{__glib_gettextize}
@@ -144,9 +140,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/gok-1.0.pc
 %{_sysconfdir}/gconf/schemas/gok.schemas
 %{_iconsdir}/hicolor/*/apps/gok.png
-%{_pixmapsdir}/*
+%{_pixmapsdir}/gok.png
 %{_desktopdir}/gok.desktop
-%{_datadir}/sounds/freedesktop/stereo/*.wav
+%{_datadir}/sounds/freedesktop/stereo/goksound1.wav
+%{_datadir}/sounds/freedesktop/stereo/goksound2.wav
 
 %if %{with apidocs}
 %files apidocs
