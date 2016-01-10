@@ -2,12 +2,12 @@
 # Conditional build:
 %bcond_without	apidocs		# disable gtk-doc
 %bcond_without	usb		# support for libusb input
-#
+
 Summary:	GNOME Onscreen Keyboard
 Summary(pl.UTF-8):	Klawiatura na ekranie dla GNOME
 Name:		gok
 Version:	2.30.1
-Release:	3
+Release:	4
 License:	LGPL v2+
 Group:		X11/Applications/Accessibility
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gok/2.30/%{name}-%{version}.tar.bz2
@@ -75,6 +75,9 @@ Summary:	gok API documentation
 Summary(pl.UTF-8):	Dokumentacja API gok
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 gok API documentation.
