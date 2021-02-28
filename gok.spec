@@ -75,9 +75,7 @@ Summary:	gok API documentation
 Summary(pl.UTF-8):	Dokumentacja API gok
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 gok API documentation.
